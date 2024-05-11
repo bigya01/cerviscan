@@ -1,0 +1,52 @@
+.aboutApp {
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #df607c;
+}
+
+.aboutdisplay {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+
+.aboutContent {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+}
+
+#classifyButton {
+    width: 40%;
+    font-size: 20px;
+    border: none;
+    background-color: #df607c;
+    padding: 10px;
+    color: white;
+    border-radius: 20px;
+    align-self: center;
+    margin-top: 20px;
+    cursor: pointer;
+    box-shadow: 1px 3px rgb(181, 174, 174);
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    .aboutApp {
+        font-size: 30px;
+    }
+
+    .aboutdisplay {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    #classifyButton {
+        width: 60%;
+    }
+}

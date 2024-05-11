@@ -4,33 +4,88 @@
 }
 
 .webNav {
-    background-color: #df607c;
+    background-color: rgb(253, 200, 209);
     padding: 20px;
     color: white;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.mobileNav {
+    justify-content: center;
+    display: none; /* Hide mobile nav in desktop view */
+}
+
+.desktopNav {
+    justify-content: space-between;
 }
 
 .navlist {
     display: flex;
-    justify-content: flex-end;
+    margin-right: 60px;
 }
 
 .navOptions {
     list-style: none;
+    margin-right: 20px;
 }
 
-.navOptions >a {
+.navOptions > a {
     text-decoration: none;
-    color: white;
-    font-size: 20px;
-    margin-right: 12px;
+    color: #c84b66;
+    font-size: 24px;
     font-weight: bold;
+    align-items: center;
 }
 
-.navOptions :hover {
-    text-decoration: underline;
-    cursor: white;
+/* Desktop view hover effect */
+.navOptions > a:hover {
+    cursor: pointer;
+    background-color: white;
+    padding: 16px;
+    border-radius: 20px;
+    box-shadow: 2px 3px rgb(101, 96, 96);
 }
 
-.title {
-    font-size: 30px;
+.logo {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+    .desktopNav {
+        display: none; /* Hide desktop nav in mobile view */
+    }
+    
+    .mobileNav {
+        display: flex; /* Show mobile nav in mobile view */
+        flex-direction: column; /* Stack items vertically in mobile view */
+        align-items: center; /* Align items at center in mobile view */
+    }
+
+    .mobileNav:nth-child(2) {
+        background-color: rgb(246, 224, 241);
+    }
+    
+    .navOptions > a:hover {
+        cursor: pointer;
+        background-color: white;
+        padding: 16px;
+        box-shadow: 2px 3px rgb(161, 152, 152);
+    }
+    
+    .navOptions > a {
+        font-size: 18px;
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .logo {
+        margin: 0;
+    }
+
+    .navlist {
+        margin: 0;
+    }
 }
