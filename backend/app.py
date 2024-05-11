@@ -7,7 +7,22 @@ import cv2
 import pickle
 from sklearn.preprocessing import LabelEncoder
 from keras.models import load_model
+from fastapi import Depends, FastAPI, HTTPException
+from sqlalchemy.orm import Session
 
+from . import db_models, schemas
+from .database import SessionLocal, engine
+
+
+app=FastAPI()
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+db_models.Base.metadata.create_all(bind=engine)
 
 
 def classify(path):
@@ -17,7 +32,7 @@ def classify(path):
     model =None
     # with open("trainedmodels.h5","rb") as f:
         # model=pickle.load(f)
-    model=load_model("newmodel.h5")
+    model=load_model("nemodels.h5")
     result=model.predict(features.reshape(1,180,180,3))
     # le = LabelEncoder().fit(['Type 1','Type 2','Type 3'])
     # result=le.inverse_transform(result)
@@ -36,12 +51,6 @@ app.add_middleware(
 )
 
 
-# @app.get('/api/')
-# def get_hello_world():
-#     return {'hello':'world'}
-# @app.get('/api/hello/')
-# def get_name(name:str):
-#     return {'name': name}
 
 @app.get('/api/classify')
 def get_classification():
@@ -58,5 +67,12 @@ async def classify_image(image: UploadFile):
         res= classify("save.jpeg")
         return {'result': f"type {res+1}","status": 'success'}
 
-
+@app.post("/contact-form/")
+def create_contact(
+    item: schemas.ContactItem, db: Session = Depends(get_db)
+):
+    db_item = db_models.ContactData(name=item.name, email=item.email, phone=item.phone, message=item.message)
+    db.add(db_item)
+    db.commit()
+    return {"res": "added sucessfully"}
 
