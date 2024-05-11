@@ -1,0 +1,200 @@
+.contact-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 600px; /* Adjust this value to your desired constant width */
+  margin: 90px auto; /* Center the container horizontally */
+  padding: 40px;
+  background-color: white;
+  box-shadow: 2px 2px 4px 2px rgb(177, 177, 177);
+  min-height: 500px;
+}
+
+.get-in-touch {
+  position: absolute;
+  left: -20%; /* Adjust this value to control the overlap */
+  width: 38%;
+  height: 80%;
+  padding: 24px;
+  background-color: rgb(217, 70, 94);
+  box-shadow: 2px 4px 4px rgb(114, 114, 114);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contactinfo p{
+  font-size: 19px;
+  margin-top: 10px;
+}
+
+/* @media screen and (max-width: 768px) {
+  .get-in-touch,
+  .contact-form {
+    width: 100%;
+    margin-left: 0;
+  }
+} */
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-left: auto; /* Align the form to the right within the container */
+  margin-top: 20px;
+}
+
+.contact-form h2 {
+  text-align: center;
+  font-weight: bold;
+}
+
+.contact-form form {
+  display: grid;
+  gap: 15px;
+  width: 400px;
+  position: relative;
+  left: 75px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form button {
+  padding: 10px 0;
+  border: none;
+  margin: 0 auto;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: #ff0066; /* Pink color */
+  color: white;
+  border-radius: 80px;
+  font-weight: bold;
+  width: 50%;
+}
+
+.contact-form button:hover {
+  background-color: #be0c54; /* Darker pink color on hover */
+}
+
+
+.contact-head {
+  margin-top: 0;
+  margin-bottom: 40px;
+  text-align: center;
+  color:#3e3a3c
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e1e1e1;
+}
+
+@media screen and (max-width: 768px) {
+  .contact-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the content horizontally */
+    max-width: 90%; /* Adjust this value to your desired constant width */
+    margin: 90px auto; /* Center the container horizontally */
+    padding: 40px;
+    background-color: white;
+    box-shadow: 2px 2px 4px 2px rgb(177, 177, 177);
+  }
+  
+  .get-in-touch {
+    width: 100%; /* Adjust this value to your desired constant width */
+    height: auto;
+    padding: 24px;
+    background-color: rgb(217, 70, 94);
+    box-shadow: 2px 4px 4px rgb(114, 114, 114);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .contactinfo p {
+    font-size: 19px;
+    margin-top: 10px;
+  }
+  
+  .contact-form {
+    /* margin-top: 500px; */
+    max-width: 100%; /* Adjust this value to your desired constant width */
+    margin-top: 20px;
+  }
+  
+  .contact-form h1, .contact-form span {
+    text-align: center;
+    color: #3e3a3c;
+  }
+  
+  .contact-form form {
+    display: grid;
+    gap: 15px;
+    width: 90%; /* Adjust this value to your desired constant width */
+    margin: 0 auto; /* Center the form horizontally */
+  }
+  
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form input[type="tel"],
+  .contact-form textarea,
+  .contact-form button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .contact-form textarea {
+    resize: vertical;
+  }
+  
+  .contact-form button {
+    padding: 10px 0;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #ff0066; /* Pink color */
+    border-radius: 80px;
+    font-weight: bold;
+  }
+  
+  .contact-form button:hover {
+    background-color: #be0c54; /* Darker pink color on hover */
+  }
+  
+}
