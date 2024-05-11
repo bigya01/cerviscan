@@ -1,25 +1,14 @@
 from fastapi import FastAPI
 from fastapi import UploadFile,HTTPException
+# from models import classify
 from fastapi.middleware.cors import CORSMiddleware
+import numpy as np
 import cv2
 import pickle
-import numpy as np
-# import tensorflow
-# from tensorflow import keras
-# from keras import layers, models, optimizers, losses, metrics
-# from keras import load_model
-
+from sklearn.preprocessing import LabelEncoder
 from keras.models import load_model
 
 
-app=FastAPI()
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Replace with your list of allowed origins
-    allow_credentials=True,
-    allow_methods=["GET", "POST", "PUT", "DELETE"],
-    allow_headers=["*"],
-)
 
 def classify(path):
     img=cv2.imread(path)
@@ -35,6 +24,29 @@ def classify(path):
     return np.argmax(result[0])
 
 
+
+
+app=FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Replace with your list of allowed origins
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["*"],
+)
+
+
+# @app.get('/api/')
+# def get_hello_world():
+#     return {'hello':'world'}
+# @app.get('/api/hello/')
+# def get_name(name:str):
+#     return {'name': name}
+
+@app.get('/api/classify')
+def get_classification():
+    return {'result': "Just a get response."}
+
 @app.post('/api/classify')
 async def classify_image(image: UploadFile):
     if not image.content_type.startswith('image/'):
@@ -44,4 +56,7 @@ async def classify_image(image: UploadFile):
         with open("save.jpeg","wb") as image_file:
             image_file.write(await image.read())
         res= classify("save.jpeg")
-        return {'result': f"type {res}","status": 'success'}
+        return {'result': f"type {res+1}","status": 'success'}
+
+
+

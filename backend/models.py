@@ -7,6 +7,7 @@ from sklearn.preprocessing import LabelEncoder
 # from keras import layers, models, optimizers, losses, metrics
 # from keras import load_model
 from keras.models import load_model
+from sklearn.preprocessing import LabelEncoder
 
 
 
@@ -17,10 +18,10 @@ def classify(path):
     model =None
     # with open("trainedmodels.h5","rb") as f:
         # model=pickle.load(f)
-    model=load_model("newmodel.h5")
+    model=load_model("nemodel.keras")
     result=model.predict(features.reshape(1,180,180,3))
-    # le = LabelEncoder().fit(['Type 1','Type 2','Type 3'])
-    # result=le.inverse_transform(result)
+    le = LabelEncoder().fit(['Type 1','Type 2','Type 3'])
+    result=le.inverse_transform(result)
     return np.argmax(result[0])
 
 print(classify("save.jpeg"))
