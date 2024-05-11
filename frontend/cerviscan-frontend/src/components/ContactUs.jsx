@@ -11,7 +11,20 @@ const ContactUs = () => {
     phone: '',
     message: ''
   });
+  const [resultObtained, setResultObtained] = useState(false);
+  const [result, setResult] = useState(null);
+  const [error, setError] = useState(null);
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(formData);
+  //   setFormData({
+  //     name: '',
+  //     email: '',
+  //     phone: '',
+  //     message: ''
+  //   });
+  // };
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
@@ -21,6 +34,28 @@ const ContactUs = () => {
       phone: '',
       message: ''
     });
+
+    fetch('http://127.0.0.1:8000/contact-form', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setResult(data.result);
+        setResultObtained(true);
+      })
+      .catch(error => {
+        console.error('There was a problem with the submission:', error);
+        setError(error.message);
+      });
   };
 
   const handleChange = (e) => {
