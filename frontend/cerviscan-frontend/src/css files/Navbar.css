@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.webNav {
+    background-color: #df607c;
+    padding: 20px;
+    color: white;
+}
+
+.navlist {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navOptions {
+    list-style: none;
+}
+
+.navOptions >a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    margin-right: 12px;
+    font-weight: bold;
+}
+
+.navOptions :hover {
+    text-decoration: underline;
+    cursor: white;
+}
+
+.title {
+    font-size: 30px;
+}
