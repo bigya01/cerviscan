@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/logo.png';
 import '../css files/Navbar.css';
+import './ContactUs'
 
 export const Navbar = () => {
   return (
@@ -26,7 +27,7 @@ export const Navbar = () => {
         </Link>
         <ul className='navlist'>
           <li className='navOptions'><Link to="/classify">Classify</Link></li>
-          <li className='navOptions'><Link to="/contact">Contact Us</Link></li>
+          <li className='navOptions'><Link to="/ContactUs">Contact Us</Link></li>
         </ul>
       </nav>
     </div>
