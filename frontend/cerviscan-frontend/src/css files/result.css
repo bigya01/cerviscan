@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+  }
+  
+  .image-container {
+    flex: 1; /* Take up remaining space */
+  }
+  
+  .cervixtypeinfo {
+    border: 1px dotted rgb(175, 174, 174);
+    flex: 1; /* Take up remaining space */
+  }
+  
