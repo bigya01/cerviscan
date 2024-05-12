@@ -1,19 +1,20 @@
-import React, { useState, useRef } from 'react';
+import React, { useState,useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
-import '../css files/classify.css';
+import '../css files/classify.css'
 
 export function Classify() {
     const [selectedFile, setSelectedFile] = useState(null);
+    const [resultObtained, setresultObtained] = useState(false);
+    const [result, setresult] = useState(null);
     const [previewImage, setPreviewImage] = useState(null);
-    const [loading, setLoading] = useState(false);
 
     const fileInputRef = useRef(null);
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         setSelectedFile(file);
-        setPreviewImage(URL.createObjectURL(file)); // Preview selected image
+        setPreviewImage(URL.createObjectURL(file));
         console.log('Filename:', file.name);
     };
 
@@ -23,10 +24,9 @@ export function Classify() {
             return;
         }
 
-        setLoading(true);
-
         const formData = new FormData();
         formData.append('image', selectedFile);
+
 
         fetch('http://127.0.0.1:8000/api/classify', {
             method: 'POST',
@@ -39,14 +39,12 @@ export function Classify() {
             return response.json();
         })
         .then(data => {
-            // Handle result here
+            setresult(data.result);
+            setresultObtained(true);
         })
         .catch(error => {
             console.error('There was a problem with the upload:', error);
             alert('There was a problem with the upload. Please try again.');
-        })
-        .finally(() => {
-            setLoading(false);
         });
     };
 
@@ -60,7 +58,6 @@ export function Classify() {
                 {previewImage && (
                     <img src={previewImage} alt="Preview" className="image-preview" />
                 )}
-                {loading && <div className="loading"></div>}
                 {!selectedFile && (
                     <label htmlFor="file-upload" className="upload-icon-container">
                         <FontAwesomeIcon icon={faCloudUploadAlt} style={{ color: "#9b005c", fontSize: "64px" }} className='cloud-icon' />
@@ -78,6 +75,12 @@ export function Classify() {
             <div className="submitbutton-container">
                 <button className="submitbutton" onClick={handleUpload}>Submit</button>
             </div>
+            {resultObtained && (
+                <div>
+                    <img src={previewImage} alt="Uploaded" />
+                    <h1>{result}</h1>
+                </div>
+            )}
         </div>
     );
-} 
+}
