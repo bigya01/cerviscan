@@ -5,8 +5,10 @@ import '../css files/classify.css'
 
 export function Classify() {
     const [selectedFile, setSelectedFile] = useState(null);
-    const [resultObtained, setresultObtained] = useState(false);
-    const [result, setresult] = useState(null);
+
+    const [resultobtained,setresultobtained] = useState(false);
+    const [result,setresult] = useState(null);
+
     const [previewImage, setPreviewImage] = useState(null);
 
     const fileInputRef = useRef(null);
@@ -39,8 +41,11 @@ export function Classify() {
             return response.json();
         })
         .then(data => {
-            setresult(data.result);
-            setresultObtained(true);
+
+            setresult(data.result)
+            setresultobtained(true)
+            // Handle result here
+
         })
         .catch(error => {
             console.error('There was a problem with the upload:', error);
