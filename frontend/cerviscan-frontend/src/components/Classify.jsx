@@ -54,34 +54,42 @@ export function Classify() {
             case "type 1":
                 return (
                     <>
+                    <div className='typeinfo'>
                         <p>TYPE 1</p>
-                        <ul>
+                            <ol>
                             <li>Completely Ectocervical</li>
                             <li>Fully Visible</li>
                             <li>Small or Large Ectocervical Component</li>
-                        </ul>
+                        </ol>
+                    </div>
+                        
                     </>
                 );
             case "type 2":
                 return (
                     <>
+                    <div className='typeinfo'>
                         <p>TYPE 2</p>
-                        <ul>
+                        <ol>
                             <li>Has an Endocervical component</li>
                             <li>Fully Visible</li>
                             <li>May have Ectocervical Component (small or large)</li>
-                        </ul>
+                        </ol>
+                    </div>
                     </>
                 );
             case "type 3":
                 return (
                     <>
+                    <div className='typeinfo'>
                         <p>TYPE 3</p>
-                        <ul>
+                            <ol>
                             <li>Has an Endocervical Component</li>
                             <li>Is NOT fully visible</li>
                             <li>May have Ectocervical component (small or large)</li>
-                        </ul>
+                        </ol>
+                    </div>
+                        
                     </>
                 );
             default:
@@ -93,7 +101,7 @@ export function Classify() {
     return (
         <div>
             {resultObtained ? (
-                <div>
+                <div className='container'>
                     <div className="image-container">
                         {previewImage && (
                             <img src={previewImage} alt="Result" className="image-preview" />
@@ -101,7 +109,11 @@ export function Classify() {
                     </div>
                         {/* <img src={previewImage} alt="Preview" className="image-preview" /> */}
                     {/* <img src={selectedFile}></img> */}
+
+                    <div className="cervixtypeinfo">
                     <div>{getResultText(result)}</div>
+  </div>
+                   
                 </div>
             ) : (
                 <>

@@ -1,3 +1,11 @@
 * {
     font-family: "Montserrat", sans-serif;
 }
+
+body {
+    background-image: url('./assets/Desktop.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* or any desired height */
+} 

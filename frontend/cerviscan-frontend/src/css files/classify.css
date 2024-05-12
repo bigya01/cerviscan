@@ -97,3 +97,62 @@
     margin-bottom: 30px;
   }
 }
+
+.typeinfo {
+  background-color: #f8f8f8; /* Background color */
+  padding: 20px; /* Padding around the content */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow */
+  background-color: #F4E1E0;
+
+}
+
+.typeinfo p {
+  font-size: 18px; /* Font size for the paragraph */
+  font-weight: bold; /* Bold font weight */
+}
+
+.typeinfo ol {
+  list-style-type: inherit ;/* Remove bullet points */
+  padding: 0; /* Remove default padding */
+}
+
+.typeinfo li {
+  margin-bottom: 5px; /* Spacing between list items */
+  font-size: 16px; /* Font size for list items */
+}
+
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* 1/3rd for image-container, 2/3rd for cervixtypeinfo */
+}
+
+.image-container {
+  height: 500px;
+}
+
+.cervixtypeinfo {
+  padding: 20px;
+  margin: 40px;
+  height: 460px;
+  width: 1000px;
+  border: 2px solid rgb(225, 220, 220);
+  margin: 90px auto 50px auto;
+  position: relative;
+  overflow: hidden;
+  background-color: #F4E1E0;
+  backdrop-filter: blur(30px);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 767px) {
+  .container {
+    grid-template-columns: 1fr; /* Switch to a single column layout for smaller screens */
+  }
+
+  .cervixtypeinfo {
+    margin: 20px;
+  }
+}

@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: column;
     font-size: 24px;
-    justify-content: center;
+    justify-content: flex-end;
     align-self: center;
     text-align: center;
 }
@@ -35,6 +35,24 @@
     font-weight: bold;
 }
 
+.datarepresentation {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next row if necessary */
+    justify-content: space-around; /* Distribute items evenly with space around them */
+    background-color: #F4E1E0;
+    font-size: 40px;
+    color: #df607c;
+    font-weight: bold;
+    align-items: center;
+    padding: 80px;
+  }
+  
+  .data {
+    width: 400px; /* Set a fixed width for each data container */
+    text-align: center; /* Center align the text */
+  }
+  
+
 @media screen and (max-width: 768px) {
     .aboutApp {
         font-size: 30px;
@@ -49,4 +67,10 @@
     #classifyButton {
         width: 60%;
     }
+}
+
+span {
+    color: black;
+    font-size: 18px;
+    font-weight: 400;
 }
