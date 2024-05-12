@@ -80,7 +80,7 @@ export function Classify() {
             <div className="submitbutton-container">
                 <button className="submitbutton" onClick={handleUpload}>Submit</button>
             </div>
-            {resultObtained && (
+            {resultobtained && (
                 <div>
                     <img src={previewImage} alt="Uploaded" />
                     <h1>{result}</h1>

@@ -7,9 +7,6 @@ from keras.models import load_model
 
 
 
-
-
-
 def classify(path):
     img=cv2.imread(path)
     resized_img = cv2.resize(img,(180,180))
@@ -17,7 +14,7 @@ def classify(path):
     model =None
     # with open("trainedmodels.h5","rb") as f:
         # model=pickle.load(f)
-    model=load_model("nemodel.h5")
+    model=load_model("model_83.h5")
     result=model.predict(features.reshape(1,180,180,3))
     # le = LabelEncoder().fit(['Type 1','Type 2','Type 3'])
     # result=le.inverse_transform(result)
