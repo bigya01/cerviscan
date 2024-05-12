@@ -38,7 +38,7 @@ export function Classify() {
             setResult(data.result);
             setResultObtained(true);
             // set pre  preview image
-            setPreviewImage(URL.createObjectURL(selectedFile));
+            // setPreviewImage(URL.createObjectURL(selectedFile));
 
         } catch (error) {
             console.error('There was a problem with the upload:', error);
@@ -57,7 +57,9 @@ export function Classify() {
                     <div className='typeinfo'>
                         <p>TYPE 1</p>
                             <ol>
+                            <h1>
                             <li>Completely Ectocervical</li>
+                                </h1>
                             <li>Fully Visible</li>
                             <li>Small or Large Ectocervical Component</li>
                         </ol>
