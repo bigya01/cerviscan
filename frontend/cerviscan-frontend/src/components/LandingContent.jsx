@@ -24,7 +24,7 @@ export const LandingContent = () => {
         <div className='aboutContent'>
           <span className='aboutApp'>Cervix Type Classification</span>
           <span>The friend of VIA</span>
-          <button onClick={() => setGoToClassify(true)} id="classifyButton">Let's go! ></button>
+          <button onClick={() => setGoToClassify(true)} id="classifyButton">Let's go! </button>
         </div>
         <img src={illustration} alt="illustration of woman" />
       </div>

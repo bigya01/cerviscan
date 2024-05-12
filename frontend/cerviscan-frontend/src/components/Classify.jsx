@@ -5,6 +5,8 @@ import '../css files/classify.css';
 
 export function Classify() {
     const [selectedFile, setSelectedFile] = useState(null);
+    const [resultobtained,setresultobtained] = useState(false);
+    const [result,setresult] = useState(null);
     const [previewImage, setPreviewImage] = useState(null);
     const [loading, setLoading] = useState(false);
 
@@ -39,6 +41,8 @@ export function Classify() {
             return response.json();
         })
         .then(data => {
+            setresult(data.result)
+            setresultobtained(true)
             // Handle result here
         })
         .catch(error => {
