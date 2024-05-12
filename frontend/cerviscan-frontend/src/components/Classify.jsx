@@ -59,7 +59,15 @@ export function Classify() {
 
     return (
         <div>
-            <div className="image-container" onClick={handleContainerClick}>
+            {resultobtained?
+            <div>
+                <img src= {selectedFile}></img>
+                <h1>{result}</h1>
+            </div>
+        :
+
+      <>
+    <div className="image-container" onClick={handleContainerClick}>
                 {previewImage && (
                     <img src={previewImage} alt="Preview" className="image-preview" />
                 )}
@@ -80,12 +88,9 @@ export function Classify() {
             <div className="submitbutton-container">
                 <button className="submitbutton" onClick={handleUpload}>Submit</button>
             </div>
-            {resultobtained && (
-                <div>
-                    <img src={previewImage} alt="Uploaded" />
-                    <h1>{result}</h1>
-                </div>
-            )}
+            
+      </>}
+            
         </div>
     );
 }
