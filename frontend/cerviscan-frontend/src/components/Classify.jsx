@@ -37,6 +37,9 @@ export function Classify() {
             const data = await response.json();
             setResult(data.result);
             setResultObtained(true);
+            // set pre  preview image
+            setPreviewImage(URL.createObjectURL(selectedFile));
+
         } catch (error) {
             console.error('There was a problem with the upload:', error);
             alert('There was a problem with the upload. Please try again.');
@@ -46,11 +49,9 @@ export function Classify() {
     const handleContainerClick = () => {
         fileInputRef.current.click();
     };
-
-    // Function to generate result text with bullet points and types
     const getResultText = (type) => {
         switch (type) {
-            case 1:
+            case "type 1":
                 return (
                     <>
                         <p>TYPE 1</p>
@@ -61,7 +62,7 @@ export function Classify() {
                         </ul>
                     </>
                 );
-            case 2:
+            case "type 2":
                 return (
                     <>
                         <p>TYPE 2</p>
@@ -72,7 +73,7 @@ export function Classify() {
                         </ul>
                     </>
                 );
-            case 3:
+            case "type 3":
                 return (
                     <>
                         <p>TYPE 3</p>
@@ -87,12 +88,19 @@ export function Classify() {
                 return "Unknown Type";
         }
     };
+    
 
     return (
         <div>
             {resultObtained ? (
                 <div>
-                    <img src={selectedFile}></img>
+                    <div className="image-container">
+                        {previewImage && (
+                            <img src={previewImage} alt="Result" className="image-preview" />
+                        )}
+                    </div>
+                        {/* <img src={previewImage} alt="Preview" className="image-preview" /> */}
+                    {/* <img src={selectedFile}></img> */}
                     <div>{getResultText(result)}</div>
                 </div>
             ) : (
