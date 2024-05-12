@@ -1,0 +1,32 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* 1/3rd for image-container, 2/3rd for cervixtypeinfo */
+}
+
+.image-container {
+  height: 500px;
+}
+
+.cervixtypeinfo {
+  margin: 40px;
+  height: 460px;
+  width: 1000px;
+  border: 2px solid rgb(225, 220, 220);
+  margin: 90px auto 50px auto;
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(229, 224, 224, 0.5);
+  backdrop-filter: blur(30px);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 767px) {
+  .container {
+    grid-template-columns: 1fr; /* Switch to a single column layout for smaller screens */
+  }
+
+  .cervixtypeinfo {
+    margin: 20px;
+  }
+}

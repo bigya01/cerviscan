@@ -1,67 +1,83 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 import '../css files/classify.css';
 
-export const Classify = () => {
-  const [image, setImage] = useState(null);
-  const [previewImage, setPreviewImage] = useState(null);
-  const [loading, setLoading] = useState(false);
+export function Classify() {
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [previewImage, setPreviewImage] = useState(null);
+    const [loading, setLoading] = useState(false);
 
-  const submitImage = async () => {
-    try {
-      if (!image) {
-        alert("Please select an image");
-        return;
-      }
+    const fileInputRef = useRef(null);
 
-      setLoading(true);
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        setSelectedFile(file);
+        setPreviewImage(URL.createObjectURL(file)); // Preview selected image
+        console.log('Filename:', file.name);
+    };
 
-      const formData = new FormData();
-      formData.append("file", image);
-      formData.append("upload_preset", "cerviscan");
-      formData.append("cloud_name", "dbx2fafex");
+    const handleUpload = () => {
+        if (!selectedFile) {
+            alert('Please select a file');
+            return;
+        }
 
-      const response = await fetch("https://api.cloudinary.com/v1_1/dbx2fafex/image/upload", {
-        method: "POST",
-        body: formData,
-      });
+        setLoading(true);
 
-      if (response.ok) {
-        alert("Image uploaded successfully");
-        setPreviewImage(null);
-      } else {
-        const errorData = await response.json();
-        console.error("Upload failed:", errorData);
-        alert("Upload failed. Please try again.");
-      }
+        const formData = new FormData();
+        formData.append('image', selectedFile);
 
-      setLoading(false);
-    } catch (error) {
-      console.error("Error uploading image:", error);
-      alert("Error uploading image. Please try again later.");
-      setLoading(false);
-    }
-  };
+        fetch('http://127.0.0.1:8000/api/classify', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Handle result here
+        })
+        .catch(error => {
+            console.error('There was a problem with the upload:', error);
+            alert('There was a problem with the upload. Please try again.');
+        })
+        .finally(() => {
+            setLoading(false);
+        });
+    };
 
-  const handleFileChange = (e) => {
-    const selectedImage = e.target.files[0];
-    setImage(selectedImage);
-    setPreviewImage(URL.createObjectURL(selectedImage)); // Preview selected image
-  };
+    const handleContainerClick = () => {
+        fileInputRef.current.click();
+    };
 
-  return (
-    <div className="container">
-      <div className="image-preview">
-        {previewImage ? (
-          <img src={previewImage} alt="Preview" />
-        ) : (
-          <img src="../assets/upload.png" alt="Image Icon" />
-        )}
-        {loading && <div className="loading"></div>}
-      </div>
-      <div>
-        <input type="file" onChange={handleFileChange} />
-      </div>
-      <button onClick={submitImage} disabled={loading}>Upload Image</button>
-    </div>
-  );
-};
+    return (
+        <div>
+            <div className="image-container" onClick={handleContainerClick}>
+                {previewImage && (
+                    <img src={previewImage} alt="Preview" className="image-preview" />
+                )}
+                {loading && <div className="loading"></div>}
+                {!selectedFile && (
+                    <label htmlFor="file-upload" className="upload-icon-container">
+                        <FontAwesomeIcon icon={faCloudUploadAlt} style={{ color: "#9b005c", fontSize: "64px" }} className='cloud-icon' />
+                        <p className="upload-text">Upload your image here</p>
+                    </label>
+                )}
+                <input
+                    id="file-upload"
+                    type="file"
+                    className="hidden"
+                    onChange={handleFileChange}
+                    ref={fileInputRef}
+                />
+            </div>
+            <div className="submitbutton-container">
+                <button className="submitbutton" onClick={handleUpload}>Submit</button>
+            </div>
+        </div>
+    );
+} 
