@@ -5,15 +5,19 @@
 }
 
 .image-container {
-  width: 400px; /* Set a fixed width for the container */
-  height: 500px; /* Set a fixed height for the container */
-  border: 2px dotted black; /* Set the border color and width */
-  margin: 40px auto; /* Center the container horizontally */
+  width: 400px;
+  height: 500px;
+  border: 2px solid rgb(225, 220, 220);
+  margin: 90px auto 50px auto;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgba(229, 224, 224, 0.5);
+  backdrop-filter: blur(30px);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .hidden {
@@ -72,6 +76,7 @@
   font-size: 14px;
   color: #555;
   text-align: center;
+  font-size: 16px;
 }
 
 .upload-icon-container {
@@ -81,4 +86,14 @@
   transform: translate(-50%, -50%);
   cursor: pointer;
   text-align: center; /* Center the text */
+}
+
+@media (max-width: 767px) {
+  .image-container {
+    margin: 18px;
+    margin-top: 20px;
+    width: 350px;
+    height: 480px;
+    margin-bottom: 30px;
+  }
 }

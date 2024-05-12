@@ -22,15 +22,18 @@ export const Result = () => {
 
   return (
     <>
-      <div className="image-container">
-        {resultImage && (
-          <img src={resultImage} alt="Result" className="image-preview" />
-        )}
-      </div>
+     <div className="container">
+  <div className="image-container">
+    {resultImage && (
+      <img src={resultImage} alt="Result" className="image-preview" />
+    )}
+  </div>
 
-      <div className="cervixtypeinfo">
-        
-      </div>
+  <div className="cervixtypeinfo">
+    {/* Add your characteristics here */}
+  </div>
+</div>
+
     </>
   );
 };
